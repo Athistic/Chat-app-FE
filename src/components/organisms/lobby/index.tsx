@@ -36,7 +36,7 @@ const LobbyForm = (props: LobbyProps) => {
             <input
               {...register('room')}
               placeholder="Room name"
-              className="w-full p-4 rounded-lg bg-white/50 text-slate-700 placeholder-slate-400 border border-sky-200 focus:outline-none focus:ring-2 focus:ring-sky-400 backdrop-blur-sm"
+              className="w-full p-3 rounded-lg bg-white/50 text-slate-700 placeholder-slate-400 border border-sky-200 focus:outline-none focus:ring-2 focus:ring-sky-400 backdrop-blur-sm"
             />
             <p className="text-red-500 text-sm mt-1">{errors.room?.message}</p>
           </div>
