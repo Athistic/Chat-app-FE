@@ -18,7 +18,7 @@ function App() {
   const joinRoom = async ({ user, room }: LobbyFormData) => {
     try {
       const connection = new HubConnectionBuilder()
-        .withUrl('https://localhost:7134/chat')
+        .withUrl('https://chat-app-be-742x.onrender.com/chat')
         .configureLogging(LogLevel.Information)
         .build();
 
