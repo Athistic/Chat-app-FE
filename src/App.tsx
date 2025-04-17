@@ -18,7 +18,7 @@ function App() {
   const joinRoom = async ({ user, room }: LobbyFormData) => {
     try {
       const connection = new HubConnectionBuilder()
-        .withUrl('https://chat-app-be-742x.onrender.com/chat')
+        .withUrl(import.meta.env.VITE_SIGNALR_URL)
         .configureLogging(LogLevel.Information)
         .build();
 
