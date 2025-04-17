@@ -26,6 +26,11 @@ jobs:
       - run: npm run lint:fix
       - run: npm run build --if-present
 
+      # Add the .env.production file dynamically for production
+      - name: Create production .env file
+        if: github.ref == 'refs/heads/main'
+        run: echo "VITE_SIGNALR_URL=${{ secrets.VITE_SIGNALR_URL }}" > .env.production
+
       - name: Set up Git Remote URL
         run: |
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
