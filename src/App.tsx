@@ -17,7 +17,6 @@ function App() {
 
   const joinRoom = async ({ user, room }: LobbyFormData) => {
     try {
-      console.log('new SignalR URL:', import.meta.env.VITE_SIGNALR_URL);
       const connection = new HubConnectionBuilder()
         .withUrl(import.meta.env.VITE_SIGNALR_URL)
         .configureLogging(LogLevel.Information)
