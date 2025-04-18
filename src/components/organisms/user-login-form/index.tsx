@@ -5,12 +5,15 @@ import {
   UserLoginSchema,
 } from './types';
 import { zodResolver } from '@hookform/resolvers/zod/src/zod.js';
+import { useNavigate } from 'react-router-dom';
 
 const UserLoginForm = (props: UserLoginFormProps) => {
   const { loginUser } = props;
+  const navigate = useNavigate();
 
   const onSubmit = async (data: UserLoginFormData) => {
     await loginUser(data);
+    navigate('/join');
   };
 
   const {
