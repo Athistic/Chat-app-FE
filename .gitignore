@@ -3,3 +3,7 @@ node_modules/
 
 # Ignore environmental variables
 .env*
+
+# Ignore self signed certs
+key.pem
+cert.pem

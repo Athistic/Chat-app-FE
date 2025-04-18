@@ -10,18 +10,8 @@ export default defineConfig({
   base: '/Chat-app-FE/',
   server: {
     https: {
-      key: fs.readFileSync(
-        path.resolve(
-          '/Users/athenkosi.mamfenguintegrove.com/Desktop',
-          'key.pem'
-        )
-      ),
-      cert: fs.readFileSync(
-        path.resolve(
-          '/Users/athenkosi.mamfenguintegrove.com/Desktop',
-          'cert.pem'
-        )
-      ),
+      key: fs.readFileSync(path.resolve(__dirname, 'key.pem')),
+      cert: fs.readFileSync(path.resolve(__dirname, 'cert.pem')),
     },
   },
 });
