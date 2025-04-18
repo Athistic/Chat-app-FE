@@ -1,9 +1,11 @@
 import { useEffect, useRef } from 'react';
 import MessageInputForm from '../message-input-form';
 import { MessageContainerProps } from './interfaces';
+import { useNavigate } from 'react-router-dom';
 
 const MessageContainer = (props: MessageContainerProps) => {
   const { messages, sendMessage, closeConnection } = props;
+  const navigate = useNavigate();
 
   const messageRef = useRef<HTMLDivElement>(null);
 
@@ -18,12 +20,17 @@ const MessageContainer = (props: MessageContainerProps) => {
     }
   }, [messages]);
 
+  const leaveRoom = async () => {
+    await closeConnection();
+    navigate('/join');
+  };
+
   return (
     <div className="min-h-screen flex flex-col p-6 bg-gradient-to-br from-blue-100 via-sky-200 to-cyan-100">
       <div className="flex justify-end mb-4">
         <button
           className="bg-red-500 text-white p-2 rounded-lg shadow-md"
-          onClick={closeConnection}
+          onClick={leaveRoom}
         >
           Leave
         </button>
