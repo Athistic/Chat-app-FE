@@ -26,6 +26,8 @@ function App() {
 
   const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
+  console.log('Testing:', apiUrl);
+
   //Register api
   const registerUser = async (formData: UserRegistrationFormData) => {
     try {
