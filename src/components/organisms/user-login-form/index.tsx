@@ -19,62 +19,53 @@ const UserLoginForm = (props: UserLoginFormProps) => {
   const {
     handleSubmit,
     register,
-    formState: { isSubmitting },
+    formState: { isSubmitting, errors },
   } = useForm<UserLoginFormData>({
     resolver: zodResolver(UserLoginSchema),
   });
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-400 to-blue-500">
-      <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
-          Login to Your Account
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-black to-gray-900 px-4">
+      <div className="bg-gray-800/80 backdrop-blur-md shadow-2xl rounded-2xl p-8 w-full max-w-md border border-green-400/20">
+        <h2 className="text-green-400 text-3xl font-extrabold mb-6 text-center tracking-widest neon-glow">
+          🔐 Welcome Back
         </h2>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
           <div>
-            <label htmlFor="email" className="block text-gray-700 font-medium">
-              Email Address
-            </label>
             <input
               {...register('email')}
-              id="email"
               type="email"
-              className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-              placeholder="Enter your email"
+              placeholder="Email address"
+              className="w-full p-3 rounded-lg bg-black/40 text-green-100 placeholder-green-300 border border-green-500/40 focus:outline-none focus:ring-2 focus:ring-green-400 backdrop-blur"
             />
+            <p className="text-red-500 text-sm mt-1">{errors.email?.message}</p>
           </div>
 
           <div>
-            <label
-              htmlFor="password"
-              className="block text-gray-700 font-medium"
-            >
-              Password
-            </label>
             <input
               {...register('password')}
-              id="password"
               type="password"
-              className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-              placeholder="Enter your password"
+              placeholder="Password"
+              className="w-full p-3 rounded-lg bg-black/40 text-green-100 placeholder-green-300 border border-green-500/40 focus:outline-none focus:ring-2 focus:ring-green-400 backdrop-blur"
             />
+            <p className="text-red-500 text-sm mt-1">
+              {errors.password?.message}
+            </p>
           </div>
 
-          <div className="text-center">
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-green-500 text-white p-3 rounded-lg shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
-            >
-              {isSubmitting ? 'Logging in...' : 'Login'}
-            </button>
-          </div>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full bg-green-500 hover:bg-green-600 text-black font-bold py-3 rounded-lg shadow-lg transition duration-300 disabled:opacity-60"
+          >
+            {isSubmitting ? 'Logging in...' : 'Login'}
+          </button>
         </form>
 
-        <p className="mt-6 text-center text-gray-600">
-          Don't have an account?{' '}
-          <a href="/registration" className="text-blue-500 hover:underline">
+        <p className="mt-6 text-center text-green-200">
+          Don’t have an account?{' '}
+          <a href="/registration" className="text-cyan-400 hover:underline">
             Register here
           </a>
         </p>

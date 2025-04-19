@@ -123,7 +123,7 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Chat-app-FE/">
       <NavBar />
       <Routes>
         <Route
