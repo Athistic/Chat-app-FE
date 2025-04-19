@@ -17,6 +17,7 @@ import { UserRegistration } from './api/models/user';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import paths from './shared/paths';
 import NavBar from './components/molecules/nav-bar';
+import HomePage from './components/pages/home';
 
 function App() {
   const [connection, setConnection] = useState<HubConnection>();
@@ -126,6 +127,7 @@ function App() {
     <BrowserRouter basename="/Chat-app-FE/">
       <NavBar />
       <Routes>
+        <Route path={paths.home} element={<HomePage />} />
         <Route
           path={paths.registration}
           element={<RegistrationForm registerUser={registerUser} />}
@@ -137,7 +139,11 @@ function App() {
         <Route
           path={paths.join}
           element={
-            userDetails && !connection && <LobbyForm joinRoom={joinRoom} />
+            userDetails && !connection ? (
+              <LobbyForm joinRoom={joinRoom} />
+            ) : (
+              <>Please login First</>
+            )
           }
         />
         <Route

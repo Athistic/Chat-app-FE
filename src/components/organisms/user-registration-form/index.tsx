@@ -89,7 +89,7 @@ const RegistrationForm = (props: UserRegistrationProps) => {
         </form>
 
         <p className="mt-6 text-center text-cyan-100">
-          Already have an account?{' '}
+          Already have an account?
           <a href="/login" className="text-cyan-300 hover:underline">
             Login here
           </a>
