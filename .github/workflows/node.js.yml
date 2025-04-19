@@ -16,6 +16,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
@@ -28,7 +29,9 @@ jobs:
       # Create .env.production dynamically for production
       - name: Create .env.production for Vite
         if: github.ref == 'refs/heads/main'
-        run: echo "VITE_SIGNALR_URL=${{ secrets.VITE_SIGNALR_URL }}" > .env.production
+        run: |
+          echo "VITE_API_BASE_URL=${{ secrets.VITE_API_BASE_URL }}" >> .env.production
+          echo "VITE_SIGNALR_URL=${{ secrets.VITE_SIGNALR_URL }}" >> .env.production
 
       - run: npm run build --if-present -- --mode production
 

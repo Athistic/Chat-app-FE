@@ -24,10 +24,12 @@ function App() {
   const [messages, setMessages] = useState<UserMessage[]>([]);
   const [userDetails, setUserDetails] = useState<UserRegistration>();
 
+  const apiUrl = import.meta.env.VITE_API_BASE_URL;
+
   //Register api
   const registerUser = async (formData: UserRegistrationFormData) => {
     try {
-      const response = await fetch('https://localhost:7134/api/User/Register', {
+      const response = await fetch(`${apiUrl}/api/User/Register`, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({
@@ -46,7 +48,7 @@ function App() {
 
   const loginUser = async (data: UserLoginFormData) => {
     try {
-      const response = await fetch('https://localhost:7134/api/User/Login', {
+      const response = await fetch(`${apiUrl}/api/User/Login`, {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify({
@@ -67,7 +69,7 @@ function App() {
 
   const getUser = async () => {
     try {
-      const response = await fetch('https://localhost:7134/api/User', {
+      const response = await fetch(`${apiUrl}/api/User`, {
         credentials: 'include',
       });
 
